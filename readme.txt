@@ -3,8 +3,8 @@ Contributors: http://profiles.wordpress.org/the-plugin-factory
 Donate link: http://thepluginfactory.co/donate/
 Tags: Responsive, AdSense, Responsive AdSense, Multi-Author AdSense, Multi-Author responsive ads, Multi-Author
 Requires at least: 3.0.1
-Tested up to: 3.8
-Stable tag: 1.0
+Tested up to: 4.2.2
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,10 +108,16 @@ Support is available on [Multi-Author AdSense Official WordPress Plugin Support 
 
 == Changelog ==
 
+= 1.0.1 =
+FIXED: Saving settings didn’t work on some servers.
+ADDED: ConsultingWP link.
+
 = 1.0 =
 Initial release. No upgrade needed.
 
 == Upgrade Notice ==
+= 1.0.1 =
+Upgrade if you’re having trouble saving your settings.
 
 = 1.0 =
 Initial release. No upgrade needed.

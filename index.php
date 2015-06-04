@@ -3,46 +3,9 @@
     Plugin Name: Multi-Author AdSense
     Plugin URI: http://thepluginfactory.co/warehouse/multi-author-adsense
 	Description: Display AdSense Advertising for Multiple Authors on your Website Quickly and Easily!
-	Version: 1.0
+	Version: 1.0.1
 	Author: The Plugin Factory
 	Author URI: http://thepluginfactory.co
-*/
-
-
-/*
-	Multi-Author AdSense (Stand Alone)
-
-		Free
-
-		-	Multiple authors: 		ability for WordPress authors to add their own AdSense publisher ID
-		-	Multiple ads / author: 	allow admin to set the number of ads an author can store in their profile
-		-	Multiple ads / page: 	allow admin to set the number of ads an author can display with their content
-		-	Multiple AdSense types:	allow users to select between advanced AdSense, basic AdSense, or standard AdSense code
-
-		Premium
-
-		-	Different ads: 			option for authors to enter their banner or other advertising code
-		-	Conditional: 			add ads only if page has more than x number of words.
-		-	Filtering: 				option to exclude ads for particular authors
-		-	Tracking: 				ability to track ad clicks for link based ads (non-flash)
-		-	Responsive: 			responsive ad options
-		-	Flexible placement: 	options to place ads after x number of paragraphs and a choice for placement after x number of words
-		- 	Advanced Filtering:		be sure to not insert ads within tables, lists, etc.
-		-	Blocking:				ability to block specific IP addresses
-
-		TODO:
-			Add text-domain for translation
-
-			Allow both AdSense & Non-AdSense Ads
-			Revenue Sharing (Generates income for you by splitting ad output between you and the authors)
-			
-			Show ads after minimum article count (Generates more articles for you)
-			Show ads only on articles of a specific length (Generates longer articles for you)
-
-			Show/Hide ads only on articles of a specific category (Keeps ads off of your special pages)
-			Show/Hide ads only on articles with a specific tag (Keeps ads restricted to certain areas)
-			Restrict specific authors from using Multi-Author AdSense (Ban trouble posters from using ads)
-			Restricts ads from the home page, search results, or archives (Keep ads off of index type pages, so your ads can be shown instead)
 */
 
 # SET UP
