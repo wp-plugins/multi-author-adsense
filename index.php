@@ -3,7 +3,7 @@
     Plugin Name: Multi-Author AdSense
     Plugin URI: http://thepluginfactory.co/warehouse/multi-author-adsense
 	Description: Display AdSense Advertising for Multiple Authors on your Website Quickly and Easily!
-	Version: 1.0.1
+	Version: 1.1
 	Author: The Plugin Factory
 	Author URI: http://thepluginfactory.co
 */
@@ -184,7 +184,7 @@
 					# EDIT THESE
 						$MAA_vars["UPPERCASE_SLUG"]	= 'MULTI_AUTHOR_ADSENSE'; // PLUGIN NAME
 						$MAA_vars["PLUGIN_TITLE"] 	= 'Multi-Author AdSense'; // Plugin Name // OPTIONS_NICK
-						$MAA_vars["VERSION"] 		= '1.0';
+						$MAA_vars["VERSION"] 		= '1.1';
 
 					# THESE ARE DYNAMIC
 						$MAA_vars["LOWERCASE_SLUG_UNDERSCORE"] = strtolower( str_replace(" ", "_", $MAA_vars["UPPERCASE_SLUG"]) ); // plugin_name //OPTIONS_URL_CODE
@@ -538,6 +538,24 @@
 						</tr>
 
 						<tr class='setting prosetting'>
+							<td>
+								<a href='#allow_auto_insert' class='popup-with-zoom-anim'><?php _e('Allow Auto Insertion'); ?></a>
+								<div class='help_content zoom-anim-dialog mfp-hide' id='allow_auto_insert'>
+									<h3>Allow Auto Insertion</h3>
+									<p><?php _e("Would you like to give your users the ability to automatically insert ads into their content?"); ?></p>
+									<p><?php _e("If you would, there is an option in their profile page, under the MAA settings. They can configure whether or not to auto insert ads, and pick which ads to insert."); ?></p>
+									<p><?php _e("If not, then ads must either be hard coded by you, placed in a widget, or inserted manually by the users using the shortcode [maa]. More instructions on using the shortcode are on each users profile page, under the MAA settings."); ?></p>
+								</div>
+							</td>
+							<td style="text-align:right;width:220px;">
+								<select name='maa_settings[allow_auto_insert]'>
+									<option value="false" <?php selected( @$maa_settings["allow_auto_insert"], "false" ); ?>><?php _e('Don\'t allow auto inserted ads'); ?></option>
+									<option value="true"  <?php selected( @$maa_settings["allow_auto_insert"], "true"  ); ?>><?php _e('Auto inserted ads are allowed'); ?></option>
+								</select>
+							</td>
+						</tr>
+
+						<tr class='setting prosetting'>
 							<td colspan=2>
 								<h4><?php _e("Display Restrictions"); ?></h4>
 							</td>
@@ -855,6 +873,7 @@
 					############################################
 						extract( shortcode_atts( array(
 							'id' => 'undefined',
+							'source' => '',
 							'align' => ''
 						), $atts ) );
 
@@ -1543,7 +1562,7 @@ if ( is_admin() ) {
 	add_shortcode( 'maa', array($MultiAuthorAdSense,'MAA') );
 	add_shortcode( 'MAA', array($MultiAuthorAdSense,'MAA') );
 
-	if ( $GLOBALS['maa_pro'] ) {
+	if ( $GLOBALS['maa_pro'] &&  @$GLOBALS['maa_settings']['allow_auto_insert'] == 'true' ) {
 		add_filter( 'the_content', 'MAA_auto_insert' );
 	}
 }

@@ -572,65 +572,67 @@ function MAA_extra_user_profile_fields( $user ) {
 		##################
 			// TODO: UPDATE HELP ON THE AUTO INSERT WHEN DIALOGE
 			if ($GLOBALS['maa_pro']) {
-				?>
-
-				<tr class="maa_settings maa_setting <?php echo @$maa_settings ?> hidden">
-					<th><label for="maa_auto_insert_when"><?php _e("Auto Insert Type"); ?></label></th>
-					<td>
-						<select name='maa_auto_insert_when'>
-							<option value='never' <?php selected( @$maa_setting['maa_auto_insert_when'], 'never' ) ?>>Never automatically insert ads</option>
-							<option value='only' <?php selected( @$maa_setting['maa_auto_insert_when'], 'only' ) ?>>Only insert when content does not contain [maa] ads</option>
-							<option value='always' <?php selected( @$maa_setting['maa_auto_insert_when'], 'always' ) ?>>Always insert, even if content contains [maa] ads already</option>
-						</select><br>
-						<span class="description maa_settings_help help <?php echo @$maa_settings.' '.$help_css ?>">
-							<?php _e("Select when ads should be automatically inserted."); ?><br>
-							<?php _e("This only counts ads inserted by the shortcode [maa and not other types of advertising."); ?>
-						</span>
-					</td>
-				</tr>
-
-				<?php
-
-				$i = 1;
-				while ($auto_insert_limit >= $i) {
+				if (@$maa_settings['allow_auto_insert'] == 'true') {
 					?>
-					<tr class="maa_settings maa_setting <?php echo @$maa_settings ?> hidden">
-						<th><label for="auto_insert_<?php echo $i; ?>"><?php _e("Auto Insert Ad "); echo $i; ?></label></th>
-						<td>
-							<select name='auto_insert_<?php echo $i; ?>_code'>
-								<option value='never' <?php selected( @$maa_setting['auto_insert_'.$i.'_code'], 'advanced' ) ?>>Do Not Insert</option>
-								<option value='advanced' <?php selected( @$maa_setting['auto_insert_'.$i.'_code'], 'advanced' ) ?>>[maa id="advanced"]</option>
-								<option value='basic' <?php selected( @$maa_setting['auto_insert_'.$i.'_code'], 'basic' ) ?>>[maa id="basic"]</option>
-								<?php
-									$i2 = 1;
-									while ($i2 <= $ad_count) {
-										echo "<option value='{$i2}' ".selected( @$maa_setting['auto_insert_'.$i.'_code'], $i2, false ).">[maa id=\"{$i2}\"]</option>";
-										$i2++;
-									}
-								?>
-							</select>
 
-							<select name='auto_insert_<?php echo $i; ?>_where'>
-								<option value='never' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'advanced' ) ?>>Do Not Insert</option>
-								<option value='above' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'above' ) ?>><?php _e("Above the article"); ?></option>
-								<option value='below' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'below' ) ?>><?php _e("Below the article"); ?></option>
-								<option value='middle' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'middle' ) ?>><?php _e("In the middle of the article"); ?></option>
-								<option value='random' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'random' ) ?>><?php _e("After a random paragraph"); ?></option>
-								<?php
-									$i2 = 1;
-									while ($i2 <= 25) {
-										echo "<option value='{$i2}' ".selected( @$maa_setting['auto_insert_'.$i.'_where'], $i2, false ).">After paragraph {$i2}</option>";
-										$i2++;
-									}
-								?>
+					<tr class="maa_settings maa_setting <?php echo @$maa_settings ?> hidden">
+						<th><label for="maa_auto_insert_when"><?php _e("Auto Insert Type"); ?></label></th>
+						<td>
+							<select name='maa_auto_insert_when'>
+								<option value='never' <?php selected( @$maa_setting['maa_auto_insert_when'], 'never' ) ?>>Never automatically insert ads</option>
+								<option value='only' <?php selected( @$maa_setting['maa_auto_insert_when'], 'only' ) ?>>Only insert when content does not contain [maa] ads</option>
+								<option value='always' <?php selected( @$maa_setting['maa_auto_insert_when'], 'always' ) ?>>Always insert, even if content contains [maa] ads already</option>
 							</select><br>
 							<span class="description maa_settings_help help <?php echo @$maa_settings.' '.$help_css ?>">
-								<?php _e("Select when and where ads should automatically be inserted in your content."); ?>
+								<?php _e("Select when ads should be automatically inserted."); ?><br>
+								<?php _e("This only counts ads inserted by the shortcode [maa and not other types of advertising."); ?>
 							</span>
 						</td>
 					</tr>
+
 					<?php
-					$i++;
+
+					$i = 1;
+					while ($auto_insert_limit >= $i) {
+						?>
+						<tr class="maa_settings maa_setting <?php echo @$maa_settings ?> hidden">
+							<th><label for="auto_insert_<?php echo $i; ?>"><?php _e("Auto Insert Ad "); echo $i; ?></label></th>
+							<td>
+								<select name='auto_insert_<?php echo $i; ?>_code'>
+									<option value='never' <?php selected( @$maa_setting['auto_insert_'.$i.'_code'], 'advanced' ) ?>>Do Not Insert</option>
+									<option value='advanced' <?php selected( @$maa_setting['auto_insert_'.$i.'_code'], 'advanced' ) ?>>[maa id="advanced"]</option>
+									<option value='basic' <?php selected( @$maa_setting['auto_insert_'.$i.'_code'], 'basic' ) ?>>[maa id="basic"]</option>
+									<?php
+										$i2 = 1;
+										while ($i2 <= $ad_count) {
+											echo "<option value='{$i2}' ".selected( @$maa_setting['auto_insert_'.$i.'_code'], $i2, false ).">[maa id=\"{$i2}\"]</option>";
+											$i2++;
+										}
+									?>
+								</select>
+
+								<select name='auto_insert_<?php echo $i; ?>_where'>
+									<option value='never' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'advanced' ) ?>>Do Not Insert</option>
+									<option value='above' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'above' ) ?>><?php _e("Above the article"); ?></option>
+									<option value='below' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'below' ) ?>><?php _e("Below the article"); ?></option>
+									<option value='middle' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'middle' ) ?>><?php _e("In the middle of the article"); ?></option>
+									<option value='random' <?php selected( @$maa_setting['auto_insert_'.$i.'_where'], 'random' ) ?>><?php _e("After a random paragraph"); ?></option>
+									<?php
+										$i2 = 1;
+										while ($i2 <= 25) {
+											echo "<option value='{$i2}' ".selected( @$maa_setting['auto_insert_'.$i.'_where'], $i2, false ).">After paragraph {$i2}</option>";
+											$i2++;
+										}
+									?>
+								</select><br>
+								<span class="description maa_settings_help help <?php echo @$maa_settings.' '.$help_css ?>">
+									<?php _e("Select when and where ads should automatically be inserted in your content."); ?>
+								</span>
+							</td>
+						</tr>
+						<?php
+						$i++;
+					}
 				}
 			} else {
 				?>
